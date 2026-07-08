@@ -1,0 +1,69 @@
+{
+  "video_id": "youtube_video__kSlb9EvdzXE_1080p",
+  "duration_sec": 23.1,
+  "note": "全片色溫皆為負值（偏冷），未進入暖色調日出階段，屬「暗處到藍調時刻漸亮」的過程，非完整日出。",
+  "arcs": [
+    {
+      "arc_id": "arc_01",
+      "start_time_sec": 0,
+      "end_time_sec": 6,
+      "features": {
+        "color_features": {
+          "avg_brightness_range": [0.163, 0.358],
+          "color_temperature_range": [-0.239, -0.121],
+          "saturation_avg_range": [0.304, 0.351],
+          "brightness_delta_within": 0.195,
+          "brightness_delta_from_prev_arc": null,
+          "color_temp_delta_from_prev_arc": null
+        },
+        "scene_features": {
+          "scene_category": "mountain_landscape",
+          "scene_confidence": 0.75,
+          "object_tags": ["sky", "horizon", "low_light"],
+          "time_of_day": "pre_dawn"
+        }
+      },
+      "labels": {
+        "mood_tags": ["mysterious", "quiet", "cool"],
+        "genre_tags": ["ambient"],
+        "instrument_tags": ["synth_pad", "low_strings"],
+        "tonal_hint": "minor",
+        "transition_type": "initial",
+        "persist_tags": []
+      }
+    },
+    {
+      "arc_id": "arc_02",
+      "start_time_sec": 6,
+      "end_time_sec": 23.1,
+      "features": {
+        "color_features": {
+          "avg_brightness_range": [0.358, 0.408],
+          "color_temperature_range": [-0.263, -0.121],
+          "saturation_avg_range": [0.351, 0.458],
+          "brightness_delta_within": 0.05,
+          "brightness_delta_from_prev_arc": 0.0,
+          "color_temp_delta_from_prev_arc": 0.001
+        },
+        "scene_features": {
+          "scene_category": "mountain_landscape",
+          "scene_confidence": 0.75,
+          "object_tags": ["sky", "horizon", "clouds"],
+          "time_of_day": "blue_hour"
+        }
+      },
+      "labels": {
+        "mood_tags": ["calm", "anticipatory", "cool"],
+        "genre_tags": ["ambient", "cinematic"],
+        "instrument_tags": ["synth_pad", "strings", "soft_piano"],
+        "tonal_hint": "neutral",
+        "transition_type": "gradual",
+        "persist_tags": ["synth_pad", "strings"]
+      }
+    }
+  ],
+  "annotator_review_notes": [
+    "候選邊界t=6s是演算法自動判定，建議人工複核這個切點在聽感上是否真的需要換音樂情緒，或整支片子其實該視為單一漸變弧段（因為兩段的mood/genre其實很接近，只是強度略增）",
+    "由於全片未進入暖色調，這支片子不適合拿來標註「日出後」的暖色/uplifting標籤範例，之後標註素材需要另找一支涵蓋完整日出過程（含暖色階段）的影片才能驗證v2規格書設計的核心情境"
+  ]
+}
