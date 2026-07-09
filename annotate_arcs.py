@@ -77,10 +77,14 @@ def annotate_arc(arc, prev_arc, is_first):
         print("\n(第一個弧段，transition_type 固定為 initial，persist_tags 為空)")
     else:
         transition_type = single_select("與前一弧段的關係 transition_type：", TRANSITION_TYPES)
-        carry_candidates = list(set(prev_arc["labels"]["instrument_tags"] + prev_arc["labels"]["mood_tags"]))
+        # 只用前段的樂器標籤當延續候選，情緒標籤(mood_tags)不列入，
+        # 避免像「epic」跟延續來的「peaceful」同時出現造成描述互相矛盾。
+        # 情緒上的演變交給 transition_type 表達即可。
+        carry_candidates = list(dict.fromkeys(prev_arc["labels"]["instrument_tags"]))
         if carry_candidates:
+            print("\n（提醒：persist_tags 建議只選1-2個最關鍵的樂器就好，選太多容易讓Suno的style標籤超過建議上限）")
             persist_tags = multi_select(
-                f"要延續前一弧段的哪些標籤？（前段有: {carry_candidates}）", carry_candidates
+                f"要延續前一弧段的哪些樂器？（前段有: {carry_candidates}）", carry_candidates
             )
         else:
             persist_tags = []
