@@ -115,6 +115,8 @@ def main():
     parser.add_argument("--interval", type=float, default=2.0, help="取樣間隔（秒）")
     parser.add_argument("--outdir", default="./frames")
     parser.add_argument("--min_arc_duration", type=float, default=15.0)
+    parser.add_argument("--features_out", default="features.json",
+                         help="輸出的特徵JSON檔名，預設 features.json")
     args = parser.parse_args()
 
     frame_infos, duration = extract_frames(args.video_path, args.outdir, args.interval)
@@ -142,11 +144,11 @@ def main():
         "features_series": features_series,
     }
 
-    with open("features.json", "w", encoding="utf-8") as f:
+    with open(args.features_out, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"候選弧段邊界（秒）: {boundary_times}")
-    print("特徵與候選邊界已存到 features.json")
+    print(f"特徵與候選邊界已存到 {args.features_out}")
 
 
 if __name__ == "__main__":
